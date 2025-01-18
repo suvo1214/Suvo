@@ -4,7 +4,7 @@ from telegram import Bot
 from telegram.ext import CommandHandler, Updater
 
 # Replace with your bot's token
-TOKEN = 'YOUR_BOT_TOKEN'
+TOKEN = '7225633470:AAEE0pHZW-s7MZycdziWA-ki054vIHISxfE'
 
 # Function to generate OTP
 def generate_otp():
