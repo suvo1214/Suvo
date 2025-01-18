@@ -1,0 +1,35 @@
+import random
+import secrets
+from telegram import Bot
+from telegram.ext import CommandHandler, Updater
+
+# Replace with your bot's token
+TOKEN = 'YOUR_BOT_TOKEN'
+
+# Function to generate OTP
+def generate_otp():
+    otp = ''.join([str(random.randint(0, 9)) for _ in range(6)])
+    return otp
+
+# Command handler to start the bot
+def start(update, context):
+    update.message.reply_text('Welcome! Use /otp to get a One-Time Password.')
+
+# Command handler to generate OTP
+def otp(update, context):
+    otp = generate_otp()
+    update.message.reply_text(f'Your OTP is: {otp}')
+
+# Main function to start the bot
+def main():
+    updater = Updater(TOKEN, use_context=True)
+    dp = updater.dispatcher
+
+    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(CommandHandler("otp", otp))
+
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
